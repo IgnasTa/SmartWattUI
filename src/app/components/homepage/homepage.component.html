@@ -1,45 +1,38 @@
-<div class="app-layout">
-    <app-sidebar></app-sidebar>
-  
-    <div class="main-content">
-      <div class="homepage">
-        <p>Jūsų išmani energijos valdymo sistema prasideda čia.</p>
-  
-        <section class="user-section">
-          <h2>Įkelkite failą</h2>
-  
-          <section class="upload-section">
-            <input type="file" accept=".csv" (change)="onFileSelected($event)" class="file-input" />
-            <button (click)="uploadFile()" [disabled]="!selectedFile" class="upload-btn">Įkelti</button>
-            <p class="upload-message">{{ uploadMessage }}</p>
-          </section>
-  
-          <div *ngIf="plan1Result && plan2Result" class="comparison-section">
-            <h3>Planų palyginimas</h3>
-            <div class="plans-container">
-              <div class="plan-card" [class.highlight]="getCheaperPlan() == 'Atsiskaitymas kilovatvalandėmis už saugomą energiją'">
-                <h4>1 planas – Atsiskaitymas kilovatvalandėmis už saugomą energiją</h4>
-                <p><strong>Bendras suvartojimas:</strong> {{ plan1Result.totalConsumption }}</p>
-                <p><strong>Sukaupta energija:</strong> {{ plan1Result.totalEnergyStored }}</p>
-                <p><strong>Energija iš tinklo:</strong> {{ plan1Result.totalEnergyBoughtFromGrid }}</p>
-                <p><strong>Kaina:</strong> €{{ plan1Result.planPrice }}</p>
-              </div>
-  
-              <div class="plan-card" [class.highlight]="getCheaperPlan() == 'Atsiskaitymas 6,667 ct už kiekvieną pasaugotą kWh'">
-                <h4>2 planas – Atsiskaitymas 6,667 ct už kiekvieną pasaugotą kWh</h4>
-                <p><strong>Bendras suvartojimas:</strong> {{ plan2Result.totalConsumption }}</p>
-                <p><strong>Sukaupta energija:</strong> {{ plan2Result.totalEnergyStored }}</p>
-                <p><strong>Energija iš tinklo:</strong> {{ plan2Result.totalEnergyBoughtFromGrid }}</p>
-                <p><strong>Kaina:</strong> €{{ plan2Result.planPrice }}</p>
-              </div>
-            </div>
-  
-            <p class="result-highlight">
-              {{ getCheaperPlan() }} yra pigesnis ✅
-            </p>
+<div class="main-content">
+    <p>Jūsų išmani energijos valdymo sistema prasideda čia.</p>
+
+    <section class="user-section">
+      <h2>Įkelkite failą</h2>
+
+      <section class="upload-section">
+        <input type="file" accept=".csv" (change)="onFileSelected($event)" class="file-input" />
+        <button (click)="uploadFile()" [disabled]="!selectedFile" class="upload-btn">Įkelti</button>
+        <p class="upload-message">{{ uploadMessage }}</p>
+      </section>
+
+      <div *ngIf="plan1Result && plan2Result" class="comparison-section">
+        <h3>Planų palyginimas</h3>
+        <div class="plans-container">
+          <div class="plan-card" [class.highlight]="getCheaperPlan() == 'Atsiskaitymas kilovatvalandėmis už saugomą energiją'">
+            <h4>1 planas – Atsiskaitymas kilovatvalandėmis pagal procentus (35%)(gaminančiam vartotojui lieka 65%)</h4>
+            <p><strong>Bendras suvartojimas:</strong> {{ plan1Result.totalConsumption }}</p>
+            <p><strong>Sukaupta energija:</strong> {{ plan1Result.totalEnergyStored }}</p>
+            <p><strong>Energija iš tinklo:</strong> {{ plan1Result.totalEnergyBoughtFromGrid }}</p>
+            <p><strong>Kaina:</strong> €{{ plan1Result.planPrice }}</p>
           </div>
-        </section>
+
+          <div class="plan-card" [class.highlight]="getCheaperPlan() == 'Atsiskaitymas 6,667 ct už kiekvieną pasaugotą kWh'">
+            <h4>2 planas – Atsiskaitymas už atgautą energijos kiekį (0,06655 Eur/kWh)</h4>
+            <p><strong>Bendras suvartojimas:</strong> {{ plan2Result.totalConsumption }}</p>
+            <p><strong>Sukaupta energija:</strong> {{ plan2Result.totalEnergyStored }}</p>
+            <p><strong>Energija iš tinklo:</strong> {{ plan2Result.totalEnergyBoughtFromGrid }}</p>
+            <p><strong>Kaina:</strong> €{{ plan2Result.planPrice }}</p>
+          </div>
+        </div>
+
+        <p class="result-highlight">
+          {{ getCheaperPlan() }} yra pigesnis ✅
+        </p>
       </div>
-    </div>
+    </section>
   </div>
-  
