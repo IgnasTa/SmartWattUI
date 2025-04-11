@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-
 import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, SidebarComponent],
+  imports: [CommonModule],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })
