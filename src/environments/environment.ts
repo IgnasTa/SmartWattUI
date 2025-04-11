@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl : 'http://smarwattapi-production.up.railway.app/api/v1'
+    apiUrl : 'hopper.proxy.rlwy.net:55356/api/v1'
 };
