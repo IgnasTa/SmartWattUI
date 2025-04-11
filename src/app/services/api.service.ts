@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl =  'http://hopper.proxy.rlwy.net:55356/api/v1';
+  private apiUrl =  'https://hopper.proxy.rlwy.net:55356/api/v1';
 
   constructor(private http: HttpClient) { }
 
